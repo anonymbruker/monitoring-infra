@@ -44,7 +44,7 @@ I had a huge issue which took up most of my time during the exam period. There d
 
 #### Problem
 
-![error](images/error_no_permission.png)
+![error_message](./images/error_no_permission.png)
 
 After replacing keys in credentials.yaml, and changing all needed files(as can be seen in code), I would still get this error.
 
@@ -115,7 +115,7 @@ After this I wait until gets to the *apply* task, in which it fetches some stuff
 
 I get this error message
 
-![error_message](images/error_no_permission.png)
+![error_message](./images/error_no_permission.png)
 
 I googled this and tried to troubleshoot a lot. I was only able to find a single *slightly* similar case, in which the linux container was 247, rather than 348.
 [Here](https://github.com/facebook/fbctf/issues/431) you can see the full github post.
