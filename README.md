@@ -88,11 +88,9 @@ I did the complete sequence of actions to do 5 times(setup of exam). This includ
 - I created respective .gitignore files which you can see in my repo, to not check in my secret keys
 
 ##### Running
-- First I locate the folder where I have my docker-compose file
-
 I am logged in to my heroku account using *heroku login*
 
-I run
+I run, in monitoring-infra/docker
 ```
 docker-compose up -d
 ```
