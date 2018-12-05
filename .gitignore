@@ -1,0 +1,8 @@
+deploy_infra
+deploy_infra.pub
+credentials.yaml
+credentials.yml
+credentials_example.yml
+.idea/*
+.terraform
+terraform/terraform.tfstate
