@@ -120,10 +120,10 @@ I get this error message
 I googled this and tried to troubleshoot a lot. I was only able to find a single *slightly* similar case, in which the linux container was 247, rather than 348.
 [Here](https://github.com/facebook/fbctf/issues/431) you can see the full github post.
 
-There was a fix for that, which is in the post, however this did not work for me at all. I tried the chmod +x *filename*, but this did not work for me.
+There was a fix for that, which is in the post, however this did not work for me at all. I tried the chmod +x *filename*, to "fix" the file, but this did not work for me.
 I also read something about pruning worker, but this was not something that I could do either.
 
-I was able to run ```terraform init``` then ```terraform apply``` in monitoring-infra/terraform manually, and it would create a pipeline in heroku and tests in statuscake. (I obviously deleted the pipeline and such when I tried again later as the max amount of heroku apps is 5 for me)
+I *was* however able to run ```terraform init``` then ```terraform apply``` in monitoring-infra/terraform manually, and it would create a pipeline in heroku and tests in statuscake. (I obviously deleted the pipeline and such when I tried again later as the max amount of heroku apps is 5 for me)
 
 ### Final words
 
