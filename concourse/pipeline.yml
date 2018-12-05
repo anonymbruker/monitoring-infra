@@ -43,7 +43,7 @@ resources:
 - name: monitoring-app
   type: git
   source:
-      uri: git@github.com:anonymbruker/monitoring-app.git
+      uri: ((infra_repo_uri))
       branch: master
       private_key: ((deploy_key_app))
 
@@ -51,6 +51,6 @@ resources:
 - name: monitoring-infra
   type: git
   source:
-      uri: git@github.com:anonymbruker/monitoring-infra.git
+      uri: ((app_repo_uri))
       branch: master
       private_key: ((deploy_key_infra))
