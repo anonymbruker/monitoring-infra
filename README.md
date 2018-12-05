@@ -44,7 +44,7 @@ I had a huge issue which took up most of my time during the exam period. There d
 
 #### Problem
 
-![error_message](./images/error_no_permission.png)
+![error_message][error]
 
 After replacing keys in credentials.yaml, and changing all needed files(as can be seen in code), I would still get this error.
 
@@ -115,7 +115,7 @@ After this I wait until gets to the *apply* task, in which it fetches some stuff
 
 I get this error message
 
-![error_message](./images/error_no_permission.png)
+![error_message][error]
 
 I googled this and tried to troubleshoot a lot. I was only able to find a single *slightly* similar case, in which the linux container was 247, rather than 348.
 [Here](https://github.com/facebook/fbctf/issues/431) you can see the full github post.
@@ -130,3 +130,5 @@ I was able to run ```terraform init``` then ```terraform apply``` in monitoring-
 I decided to the best out of my situation as I still know how to set it up, and have been able to do this during the course in our practice sessions.
 
 I have tried in this readme file to explain in detail how, to do everything, and what to do, to show not only my competence in this subject, but my ability to debug/troubleshoot. You should be able to fork my repos as per usual, and it should work for you.
+
+[error]: https://i.imgur.com/ggNYjZA.png "error_message"
