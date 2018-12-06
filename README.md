@@ -2,7 +2,7 @@
 
 ## What to change
 
-Start by forking my [infra](https://github.com/anonymbruker/monitoring-infra) repo and my [app](https://github.com/anonymbruker/monitoring-app) repo.
+Start by forking my [infra](https://github.com/anonymbruker/monitoring-infra) repo, my [app](https://github.com/anonymbruker/monitoring-app) repo and my [gcloud](https://github.com/anonymbruker/gcloud-start) repo.
 
 - You need to go into monitoring-infra/terraform/variables.tf and change the variables to your own
 - Look at the monitoring-infra/credentials_sample.yaml, rename to credentials.yaml and replace content with your own secrets
@@ -12,6 +12,9 @@ Start by forking my [infra](https://github.com/anonymbruker/monitoring-infra) re
     - You can find your heroku api key and email easily in 'manage account'
     - You can find statuscake api key and *username* easily in user details
     - github_token is you personal access token
+- Add your own account.json file to the terraform folder of gcloud-start.
+
+You can download your existing [Google Cloud service account file](https://console.cloud.google.com/apis/credentials/serviceaccountkey) from the google cloud console, or you can create a new one from the same page. [Here](https://www.terraform.io/docs/providers/google/r/cloudfunctions_function.html) is an easy test gcloud function you can try.
 
 You can see a detailed step by step further down of how I set it up
 
