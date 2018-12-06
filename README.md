@@ -82,7 +82,7 @@ I did the complete sequence of actions to do 5 times(setup of exam). This includ
     - Created an SSH deploy key named "deploy_infra" with blank passwords using
     ```$ssh-keygen -t rsa -b 4096 -C "your_email@example.com"```
     - Added the deploy_infra.pub under the repos deploy keys, with read/write access
-    - Added the private deploy_infra to credentials.yaml with correct semantics
+    - Added the private deploy_infra and deploy_app to credentials.yaml with correct semantics
         - A space between pipe "|" and :
         - Double spaces indent on the left
         - Example shown in credentials_sample.yaml
