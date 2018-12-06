@@ -2,8 +2,10 @@
 
 ## What to change
 
+Start by forking my [infra](https://github.com/anonymbruker/monitoring-infra) repo and my [app](https://github.com/anonymbruker/monitoring-app) repo.
+
 - You need to go into monitoring-infra/terraform/variables.tf and change the variables to your own
-- Look at the monitoring-infra/credentials_sample.yaml and replace with your own secrets
+- Look at the monitoring-infra/credentials_sample.yaml, rename to credentials.yaml and replace content with your own secrets
     - Generate deploy keys (ssh) and put the private part in the credentials file
     - Put the public key in your own respective repos
         - Note that infra repo needs write access!
