@@ -1,5 +1,11 @@
 # Infra for monitoring
 
+I have tried to complete the following tasks.
+- Basic setup
+- Overwatch, notifications and metrics
+- Applicationlogger
+- Serverless
+
 ## What to change
 
 Start by forking my [infra](https://github.com/anonymbruker/monitoring-infra) repo, my [app](https://github.com/anonymbruker/monitoring-app) repo and my [gcloud](https://github.com/anonymbruker/gcloud-start) repo.
