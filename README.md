@@ -13,30 +13,32 @@ Start by forking my [infra](https://github.com/anonymbruker/monitoring-infra) re
     - You can find statuscake api key and *username* easily in user details
     - github_token is you personal access token
 
+You can see a detailed step by step further down of how I set it up
+
 ## Command templates
 
 #### [heroku](https://dashboard.heroku.com/) commands
 ```
-heroku login
+$heroku login
 ```
 #### [concourse](https://concourse-ci.org/) commands
 ```
-docker-compose up -d
-docker-compose down
+$docker-compose up -d
+$docker-compose down
 ```
 #### [fly](https://concourse-ci.org/fly.html) commands
 ```
-fly -t ≤target> login
-fly -t ≤target> sp -p pipeline_name -c concourse/pipeline.yml -l credentials.yaml
+$fly -t ≤target> login
+$fly -t ≤target> sp -p pipeline_name -c concourse/pipeline.yml -l credentials.yaml
 ```
 #### [terraform](https://www.terraform.io/) commands
 ```
-terraform init
-terraform apply
+$terraform init
+$terraform apply
 ```
 ##### my pipeline command
 ```
-fly -t pgr301 sp -p anonym-exam -c concourse/pipeline.yml -l credentials.yaml
+$fly -t pgr301 sp -p anonym-exam -c concourse/pipeline.yml -l credentials.yaml
 ```
 
 
@@ -60,7 +62,7 @@ I did the complete sequence of actions to do 5 times(setup of exam). This includ
     - I changed the procfile from using $PORT to %PORT% as I am on windows
     - Added a .env file containing ```JDBC_DATABASE_URL=jdbc:h2:mem:test```
     - Created an SSH deploy key named "deploy_app" with blank passwords using
-    ```ssh-keygen -t rsa -b 4096 -C "your_email@example.com"```
+    ```$ssh-keygen -t rsa -b 4096 -C "your_email@example.com"```
     - Added the deploy_app.pub under the repos deploy keys, with read/write access
     - (Later added the private part to credentials.yaml file in infra)
 - Infra
@@ -75,7 +77,7 @@ I did the complete sequence of actions to do 5 times(setup of exam). This includ
             - Where I obviously changed every name needed
             - Every path name in pipeline.yml, /concourse/java/task.yml
     - Created an SSH deploy key named "deploy_infra" with blank passwords using
-    ```ssh-keygen -t rsa -b 4096 -C "your_email@example.com"```
+    ```$ssh-keygen -t rsa -b 4096 -C "your_email@example.com"```
     - Added the deploy_infra.pub under the repos deploy keys, with read/write access
     - Added the private deploy_infra to credentials.yaml with correct semantics
         - A space between pipe "|" and :
@@ -88,20 +90,21 @@ I did the complete sequence of actions to do 5 times(setup of exam). This includ
         - Located under user details
     - Created and added a [Personal Access Token](https://github.com/settings/tokens)
 - I created respective .gitignore files which you can see in my repo, to not check in my secret keys
+- Manually added the logzio token by typing ```$set LOGZIO_TOKEN=<token>``` if on windows
 
 ##### Running
 I am logged in to my heroku account using *heroku login*
 
 I run, in monitoring-infra/docker
 ```
-docker-compose up -d
+$docker-compose up -d
 ```
 Now after this is up and running, I use git bash to run some more commands. Starting from the root folder /monitoring-infra I run
 ```
-fly -t pgr301 login
+$fly -t pgr301 login
 # I am now logged into main
 
-fly -t pgr301 sp -p anonym-exam -c concourse/pipeline.yml -l credentials.yaml
+$fly -t pgr301 sp -p anonym-exam -c concourse/pipeline.yml -l credentials.yaml
 ```
 This will create my pipeline using the credentials.yaml file to fill in my secret keys.
 
@@ -123,7 +126,23 @@ I googled this and tried to troubleshoot a lot. I was only able to find a single
 There was a fix for that, which is in the post, however this did not work for me at all. I tried the chmod +x *filename*, to "fix" the file, but this did not work for me.
 I also read something about pruning worker, but this was not something that I could do either.
 
-I *was* however able to run ```terraform init``` then ```terraform apply``` in monitoring-infra/terraform manually, and it would create a pipeline in heroku and tests in statuscake. (I obviously deleted the pipeline and such when I tried again later as the max amount of heroku apps is 5 for me)
+I *was* however able to run ```$terraform init``` then ```$terraform apply``` in monitoring-infra/terraform manually, and it would create a pipeline in heroku and tests in statuscake. (I obviously deleted the pipeline and such when I tried again later as the max amount of heroku apps is 5 for me)
+
+#### continuation of running
+Assuming you are able to run the infra job perfectly, you can proceed.
+
+- We need to manually get the hostedgraphite host url
+- Under your Heroku apps you can find the hosted graphite site
+- Scroll down until you find the API key, and click "how do I send metrics"
+- You will get a url; run this command in your cli
+```
+$heroku config:set GRAPHITE_HOST=≤URL> --app yourname-app-ci
+```
+You can now run the deploy task. The reason we have to do this is because the url is not available until you run the infra task. You should now be able to access everything on each respective website.
+```
+http://yourname-app-ci.herokuapp.com/
+```
+If you want to automatically deploy to Heroku when you push to git, you can enable automatic deploys. Go under your heroku apps, deployment tab, click on github and find your repo. It should now automatically deploy at each push.
 
 ### Final words
 
