@@ -10,7 +10,7 @@ Start by forking my [infra](https://github.com/anonymbruker/monitoring-infra) re
     - Put the public key in your own respective repos
         - Note that infra repo needs write access!
     - You can find your heroku api key and email easily in 'manage account'
-    - You can find statuscake api key and *username* easily in user details
+    - You can find statuscake api key and *username* easily in 'user details'
     - github_token is you personal access token
 - Add your own account.json file to the terraform folder of gcloud-start.
 
